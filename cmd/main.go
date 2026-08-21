@@ -2,20 +2,14 @@ package main
 
 import (
 	"fmt"
+	"linalg/internal/linalType"
 )
 
 func main() {
-	var temp int = 4
-	var p *int
+	testData := [2]float64{1.2, 3.2}
 
-	p = &temp
+	temp := linaltype.New(testData)
 
-	fmt.Println(*p)
-
-	var numbers [5]int = [5]int{1, 2, 3, 4, 5}
-
-	var pNumber *[5]int = &numbers
-
-	fmt.Println((*pNumber))
+	fmt.Println(*temp)
 }
 
