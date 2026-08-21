@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"linalg/internal/linalType"
 )
 
@@ -10,6 +9,10 @@ func main() {
 
 	temp := linaltype.New(testData)
 
-	fmt.Println(*temp)
+	temp.Print()
+
+	temp.Add(testData)
+
+	temp.Print()
 }
 
