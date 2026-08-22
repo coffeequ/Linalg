@@ -1,7 +1,7 @@
 package main
 
 import (
-	"linalg/internal/linalType"
+	linaltype "linalg/internal/linalType"
 )
 
 func main() {
@@ -15,4 +15,3 @@ func main() {
 
 	temp.Print()
 }
-
