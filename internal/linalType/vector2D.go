@@ -48,9 +48,9 @@ func (curr *Vector2D) Subtraction(antoher *Vector2D) (ptrRes *Vector2D) {
 
 	var temp Vector2D
 
-	temp.data[0] = curr.X() + antoher.X()
+	temp.data[0] = curr.X() - antoher.X()
 
-	temp.data[1] = curr.Y() + antoher.Y()
+	temp.data[1] = curr.Y() - antoher.Y()
 
 	ptrRes = &temp
 
