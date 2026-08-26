@@ -2,8 +2,8 @@ package linaltype
 
 import (
 	"errors"
-	"fmt"
 	"math"
+	"strconv"
 )
 
 // Каждая позиция в массиве соответствует позиции координаты. 0 - X, 1 - Y, 2 - Z
@@ -21,8 +21,8 @@ func (curr *Vector3D) Getter() [3]float64 {
 	return curr.data
 }
 
-func (curr *Vector3D) Print() {
-	fmt.Println(curr.Getter())
+func (curr *Vector3D) ToString() string {
+	return strconv.FormatFloat(curr.data[0], 'f', 2, 64) + " " + strconv.FormatFloat(curr.data[1], 'f', 2, 64) + strconv.FormatFloat(curr.data[2], 'f', 2, 64)
 }
 
 func (curr *Vector3D) X() float64 {
@@ -34,7 +34,7 @@ func (curr *Vector3D) Y() float64 {
 }
 
 func (curr *Vector3D) Z() float64 {
-	return curr.data[1]
+	return curr.data[2]
 }
 
 func (curr *Vector3D) SetX(val float64) {
@@ -67,7 +67,7 @@ func (curr *Vector3D) MultpValue(val float64) {
 	curr.data[2] *= val
 }
 
-func (curr Vector3D) Cross(another *Vector3D) (prtRes *Vector3D) {
+func (curr *Vector3D) Cross(another *Vector3D) (prtRes *Vector3D) {
 	return &Vector3D{
 		data: [3]float64{
 			(curr.Y()*another.Z() - curr.Z()*another.Y()),
@@ -83,7 +83,7 @@ func (curr *Vector3D) GetLength() float64 {
 
 func (curr *Vector3D) Normalize() error {
 	if curr.GetLength() == 0 {
-		return errors.New("Error. X and Y equal 0")
+		return errors.New("Error. X Y Z equal 0")
 	}
 	var vectLength = curr.GetLength()
 

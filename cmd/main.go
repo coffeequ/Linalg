@@ -20,7 +20,7 @@ func main() {
 
 	testVector2D.MultpValue(2)
 
-	testVector2D.Print()
+	testVector2D.ToString()
 
 	var errDivisin error = testVector2D.DivisionValue(2)
 
@@ -28,7 +28,7 @@ func main() {
 		fmt.Println(errDivisin.Error())
 	}
 
-	testVector2D.Print()
+	fmt.Println(testVector2D.ToString())
 
 	var err = anotherVector.Normalize()
 
