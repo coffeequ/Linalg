@@ -22,7 +22,11 @@ func main() {
 
 	testVector2D.Print()
 
-	testVector2D.DivisionValue(2)
+	var errDivisin error = testVector2D.DivisionValue(2)
+
+	if errDivisin != nil {
+		fmt.Println(errDivisin.Error())
+	}
 
 	testVector2D.Print()
 

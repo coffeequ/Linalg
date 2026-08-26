@@ -78,9 +78,16 @@ func (curr *Vector2D) MultpValue(value float64) {
 	curr.data[1] *= value
 }
 
-func (curr *Vector2D) DivisionValue(value float64) {
+func (curr *Vector2D) DivisionValue(value float64) error {
+	if value == 0 {
+		return errors.New("Error. Devision by zero is dosent work")
+	}
+
 	curr.data[0] /= value
+
 	curr.data[1] /= value
+
+	return nil
 }
 
 func (curr *Vector2D) Normalize() error {
