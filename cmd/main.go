@@ -1,46 +1,49 @@
 package main
 
 import (
-	"fmt"
 	linaltype "linalg/internal/linalType"
 )
 
 func main() {
-	testData := [2]float64{11, 12}
+	testData := []float64{11, 12}
 
-	var testVector2D *linaltype.Vector2D = linaltype.NewVector2D(testData)
+	var res *linaltype.Matrix = linaltype.NewMatrix(2, 3, testData)
 
-	var anotherVector *linaltype.Vector2D = linaltype.NewVector2D([2]float64{0, 0})
+	println(res)
 
-	var tempVect3D *linaltype.Vector3D = linaltype.NewVector3D([3]float64{0.2, 1.2, 333.2})
+	// var testVector2D *linaltype.Vector2D = linaltype.NewVector2D(testData)
 
-	fmt.Println(testVector2D.GetLength())
+	// var anotherVector *linaltype.Vector2D = linaltype.NewVector2D([2]float64{0, 0})
 
-	var text string = "Hello world"
+	// var tempVect3D *linaltype.Vector3D = linaltype.NewVector3D([3]float64{0.2, 1.2, 333.2})
 
-	fmt.Println(text)
+	// fmt.Println(testVector2D.GetLength())
 
-	fmt.Println(tempVect3D.ToString())
+	// var text string = "Hello world"
 
-	anotherVector.SetX(3)
+	// fmt.Println(text)
 
-	anotherVector.SetY(2)
+	// fmt.Println(tempVect3D.ToString())
 
-	testVector2D.MultpValue(2)
+	// anotherVector.SetX(3)
 
-	var errDivisin error = testVector2D.DivisionValue(2)
+	// anotherVector.SetY(2)
 
-	if errDivisin != nil {
-		fmt.Println(errDivisin.Error())
-	}
+	// testVector2D.MultpValue(2)
 
-	fmt.Println(testVector2D.ToString())
+	// var errDivisin error = testVector2D.DivisionValue(2)
 
-	var err = anotherVector.Normalize()
+	// if errDivisin != nil {
+	// 	fmt.Println(errDivisin.Error())
+	// }
 
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
+	// fmt.Println(testVector2D.ToString())
+
+	// var err = anotherVector.Normalize()
+
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// 	return
+	// }
 
 }
