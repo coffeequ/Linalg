@@ -12,15 +12,21 @@ func main() {
 
 	var anotherVector *linaltype.Vector2D = linaltype.NewVector2D([2]float64{0, 0})
 
+	var tempVect3D *linaltype.Vector3D = linaltype.NewVector3D([3]float64{0.2, 1.2, 333.2})
+
 	fmt.Println(testVector2D.GetLength())
+
+	var text string = "Hello world"
+
+	fmt.Println(text)
+
+	fmt.Println(tempVect3D.ToString())
 
 	anotherVector.SetX(3)
 
 	anotherVector.SetY(2)
 
 	testVector2D.MultpValue(2)
-
-	testVector2D.ToString()
 
 	var errDivisin error = testVector2D.DivisionValue(2)
 
