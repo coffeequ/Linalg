@@ -2,8 +2,8 @@ package linaltype
 
 import (
 	"errors"
-	"fmt"
 	"math"
+	"strconv"
 )
 
 type Vector2D struct {
@@ -48,9 +48,9 @@ func (curr *Vector2D) Subtraction(antoher *Vector2D) (ptrRes *Vector2D) {
 
 	var temp Vector2D
 
-	temp.data[0] = curr.X() + antoher.X()
+	temp.data[0] = curr.X() - antoher.X()
 
-	temp.data[1] = curr.Y() + antoher.Y()
+	temp.data[1] = curr.Y() - antoher.Y()
 
 	ptrRes = &temp
 
@@ -61,8 +61,8 @@ func (curr *Vector2D) Getter() [2]float64 {
 	return curr.data
 }
 
-func (curr *Vector2D) Print() {
-	fmt.Println(curr.Getter())
+func (curr *Vector2D) ToString() string {
+	return strconv.FormatFloat(curr.data[0], 'f', 2, 64) + " " + strconv.FormatFloat(curr.data[1], 'f', 2, 64)
 }
 
 func (curr *Vector2D) GetLength() float64 {
