@@ -1,24 +1,46 @@
 package linaltype
 
+import (
+	"errors"
+	"slices"
+)
+
 type Matrix struct {
-	data [][]float64
+	data [][]float32
+	row  int
+	col  int
 }
 
-func NewMatrix(rows int, cols int, data []float64) *Matrix {
+func NewMatrix(rows int, cols int, data []float32) (*Matrix, error) {
 
-	var matrix [][]float64 = make([][]float64, rows)
-
-	for i := range matrix {
-		matrix[i] = make([]float64, cols)
+	if rows < 0 || cols < 0 {
+		return nil, errors.New("Rows or cols < 0!")
 	}
 
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
-			matrix[i][j] = data[i*cols+j]
+	var matrix [][]float32 = make([][]float32, rows)
+
+	for i := range matrix {
+		matrix[i] = make([]float32, cols)
+	}
+
+	idx := 0
+
+	for j := 0; j < cols; j++ {
+		for i := 0; i < rows; i++ {
+			if idx < len(data) {
+				matrix[i][j] = data[idx]
+				idx++
+			}
 		}
 	}
 
 	return &Matrix{
 		data: matrix,
-	}
+		row:  rows,
+		col:  cols,
+	}, nil
+}
+
+func (curr *Matrix) GetData() [][]float32 {
+	return slices.Clone(curr.data)
 }

@@ -1,15 +1,21 @@
 package main
 
 import (
+	"fmt"
 	linaltype "linalg/internal/linalType"
 )
 
 func main() {
-	testData := []float64{11, 12}
+	testData := []float32{0, 0, 1, 2, 3}
 
-	var res *linaltype.Matrix = linaltype.NewMatrix(2, 3, testData)
+	var res, err = linaltype.NewMatrix(2, 3, testData)
 
-	println(res)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(res.GetData())
+	fmt.Println(testData)
 
 	// var testVector2D *linaltype.Vector2D = linaltype.NewVector2D(testData)
 
