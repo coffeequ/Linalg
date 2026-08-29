@@ -14,7 +14,7 @@ type Matrix struct {
 func NewMatrix(rows int, cols int, data []float32) (*Matrix, error) {
 
 	if rows < 0 || cols < 0 {
-		return nil, errors.New("Rows or cols < 0!")
+		return &Matrix{}, errors.New("Rows or cols < 0!")
 	}
 
 	var matrix [][]float32 = make([][]float32, rows)
@@ -41,6 +41,48 @@ func NewMatrix(rows int, cols int, data []float32) (*Matrix, error) {
 	}, nil
 }
 
-func (curr *Matrix) GetData() [][]float32 {
+func (curr *Matrix) GetDataAll() [][]float32 {
 	return slices.Clone(curr.data)
+}
+
+func (curr *Matrix) GetCurrentItem(row int, col int) float32 {
+	return curr.data[row][col]
+}
+
+func (curr *Matrix) Cols() int {
+	return curr.col
+}
+
+func (curr *Matrix) Rows() int {
+	return curr.row
+}
+
+func (curr *Matrix) Add(valA, valB *Matrix) error {
+
+	if curr == nil {
+		return errors.New("Matrix is nill")
+	}
+
+	if valA == nil || valB == nil {
+		return errors.New("Matrix is nill")
+	}
+
+	if valA.row != valB.row || valA.col != valB.col {
+		return errors.New("Error. Matrix is not equal")
+	}
+
+	var rows int = valA.row
+
+	if rows == 0 {
+		curr.data = nil
+		return nil
+	}
+
+	var cols int = valA.col
+
+	for i := 0; i < rows; i++ {
+
+	}
+
+	return nil
 }
