@@ -59,30 +59,43 @@ func (curr *Matrix) Rows() int {
 
 func (curr *Matrix) Add(valA, valB *Matrix) error {
 
-	if curr == nil {
-		return errors.New("Matrix is nill")
-	}
-
 	if valA == nil || valB == nil {
-		return errors.New("Matrix is nill")
+		return errors.New("Matrix one or two is nill")
 	}
 
-	if valA.row != valB.row || valA.col != valB.col {
+	var rowsA int = valA.Rows()
+
+	var rowsB int = valB.Rows()
+
+	var colsA int = valA.Cols()
+
+	var colsB int = valB.Cols()
+
+	if rowsA != rowsB || colsA != colsB {
 		return errors.New("Error. Matrix is not equal")
 	}
 
-	var rows int = valA.row
-
-	if rows == 0 {
+	if rowsA == 0 || rowsB == 0 {
 		curr.data = nil
 		return nil
 	}
 
-	var cols int = valA.col
-
-	for i := 0; i < rows; i++ {
-
+	if len(curr.data) != rowsA {
+		curr.data = make([][]float32, rowsA)
 	}
+
+	for i := 0; i < rowsA; i++ {
+		if len(curr.data[i]) != colsA {
+			curr.data[i] = make([]float32, colsA)
+		}
+		for j := 0; j < colsA; j++ {
+			curr.data[i][j] = valA.data[i][j] + valB.data[i][j]
+		}
+	}
+
+	curr.row = rowsA
+
+	curr.col = colsA
 
 	return nil
 }
