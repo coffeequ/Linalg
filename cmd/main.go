@@ -6,41 +6,16 @@ import (
 )
 
 func main() {
-	testData := [2]float64{11, 12}
+	//testData := []float32{0, 0, 1, 2, 3}
 
-	var testVector2D *linaltype.Vector2D = linaltype.NewVector2D(testData)
+	var tryUse, _ = linaltype.NewMatrix(2, 2, []float32{1, 2})
 
-	var anotherVector *linaltype.Vector2D = linaltype.NewVector2D([2]float64{0, 0})
+	var anotherUse, _ = linaltype.NewMatrix(2, 2, []float32{3, 4})
 
-	var tempVect3D *linaltype.Vector3D = linaltype.NewVector3D([3]float64{0.2, 1.2, 333.2})
+	var resSumm, _ = linaltype.NewMatrix(1, 1, []float32{1, 1, 2})
 
-	fmt.Println(testVector2D.GetLength())
+	resSumm.Add(tryUse, anotherUse)
 
-	var text string = "Hello world"
-
-	fmt.Println(text)
-
-	fmt.Println(tempVect3D.ToString())
-
-	anotherVector.SetX(3)
-
-	anotherVector.SetY(2)
-
-	testVector2D.MultpValue(2)
-
-	var errDivisin error = testVector2D.DivisionValue(2)
-
-	if errDivisin != nil {
-		fmt.Println(errDivisin.Error())
-	}
-
-	fmt.Println(testVector2D.ToString())
-
-	var err = anotherVector.Normalize()
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
+	fmt.Println(resSumm.GetDataAll())
 
 }
