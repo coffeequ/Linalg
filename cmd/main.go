@@ -17,5 +17,4 @@ func main() {
 	resSumm.Add(tryUse, anotherUse)
 
 	fmt.Println(resSumm.GetDataAll())
-
 }

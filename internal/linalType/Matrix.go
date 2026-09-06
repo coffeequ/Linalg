@@ -45,7 +45,7 @@ func (curr *Matrix) GetDataAll() [][]float32 {
 	return slices.Clone(curr.data)
 }
 
-func (curr *Matrix) GetCurrentItem(row int, col int) float32 {
+func (curr *Matrix) Get(row int, col int) float32 {
 	return curr.data[row][col]
 }
 
@@ -224,4 +224,11 @@ func (curr *Matrix) MultiplyMatrix(valA, valB *Matrix) error {
 	curr.col = cols
 
 	return nil
+}
+
+func (curr *Matrix) Set(row int, col int, data []float32) (float32, error) {
+	if (row < 0 || row > curr.row) || (col < 0 || col > curr.col) {
+		return 0, errors.New("Index out of bounds")
+	}
+	return curr.data[row][col], nil
 }
